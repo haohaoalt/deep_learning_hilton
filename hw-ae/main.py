@@ -1,12 +1,18 @@
-
+import torchvision
+from matplotlib import pyplot as plt
 from utils import parse_option, set_gpu, PrepareFunc, set_seeds, cal_debias_al_acc, debias_dataloader2tensor
 import sys
 import datetime
 from pprint import pprint
 import torch
 import numpy as np
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+import warnings
+import torch.nn.functional as F
+warnings.filterwarnings("ignore")
 
-YOUR_STUDENT_ID = "TODO"
+YOUR_STUDENT_ID = "zhanghao"
 
 def train_rbm(model, train_loader, rbm_models, criterion, args):
     print("Begin training..")
@@ -16,7 +22,7 @@ def train_rbm(model, train_loader, rbm_models, criterion, args):
             x = x.view(x.shape[0], -1).to(torch.device('cuda'))
 
             model.contrastive_divergence(rbm_models.v2h(x), args.lr_rbm)
-            loss = criterion("TODO", x)
+            loss = criterion(rbm_models.h2v(model.v2h2v(rbm_models.v2h(x))), x)
             epoch_loss += loss
         print(f'Epoch {epoch} Loss: {epoch_loss:.4f}.')
     print("Completed.")
@@ -32,7 +38,10 @@ def train_ae(model, train_loader, criterion, optimizer, args):
         for idx, (x, _) in enumerate(train_loader):
             x = x.view(x.shape[0], -1).to(torch.device('cuda'))
 
-            loss = "TODO (这里大约要写五行)"
+            loss = criterion(model(x),x)
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
 
             epoch_loss += loss
         print(f'Epoch {epoch} Loss: {epoch_loss:.4f}.')
@@ -121,7 +130,7 @@ if __name__ == '__main__':
     if not is_colab:
         set_gpu(args.gpu)
     pprint(vars(args))
-
+# 准备数据集 
     prepare_handle = PrepareFunc(args)
     train_loader, test_loader = prepare_handle.prepare_dataloader(args.dataset)
 

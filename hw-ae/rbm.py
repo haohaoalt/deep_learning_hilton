@@ -6,20 +6,22 @@ from torch.autograd import Variable
 class RBM(nn.Module):
     def __init__(self, in_features, out_features, k=2):
         super(RBM, self).__init__()
-        self.fc = "TODO"
-        self.bias_v = "TODO"
-        self.bias_h = "TODO"
+        self.fc = (torch.randn((in_features,out_features))*sqrt(2/(in_features+out_features))).to(torch.device('cuda'))
+        self.bias_v = torch.zeros(in_features).to(torch.device('cuda'))
+        self.bias_h = torch.zeros(out_features).to(torch.device('cuda'))
         self.k = k
 
     def sample_p(self, p):
-       return "TODO"
+       sample=torch.rand_like(p) # 0-1均匀分布
+       sample=torch.where(sample<=p,1.,0.)
+       return sample
 
     def v2h(self, v):
         p_h = F.sigmoid(v @ self.fc + self.bias_h)
         return p_h, self.sample_p(p_h)
 
     def h2v(self, h):
-        p_v = "TODO"
+        p_v = torch.sigmoid(h @ self.fc.transpose(0,1)+self.bias_v)
         return p_v, self.sample_p(p_v)
 
     def gibbs_h2v2h(self, h):
@@ -34,9 +36,9 @@ class RBM(nn.Module):
         for _ in range(self.k):
             p_v, a_v, p_h, a_h = self.gibbs_h2v2h(a_h)
 
-        self.fc += "TODO"
-        self.bias_v += "TODO"
-        self.bias_h += "TODO"
+        self.fc += lr*(torch.einsum('bp,bq->bpq',x,pos_a_h)-torch.einsum('bp,bq->bpq',a_v,a_h)).mean(0)
+        self.bias_v += lr*(x-a_v).mean(0)
+        self.bias_h += lr*(pos_a_h-a_h).mean(0)
 
     def v2h2v(self, x):
         h, _ = self.v2h(x)

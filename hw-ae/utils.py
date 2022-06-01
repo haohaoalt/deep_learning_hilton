@@ -210,10 +210,10 @@ class PrepareFunc(object):
         for i, cur_model in enumerate(rbm_models):
             encoder_id = i
             decoder_id = rbm_model_length - 1 - i
-            pretrained_dict[f'encoder.{encoder_id}.0.weight'] = "TODO"
-            pretrained_dict["TODO"] = cur_model.bias_h
-            pretrained_dict[f'decoder.{decoder_id}.0.weight'] = "TODO"
-            pretrained_dict["TODO"] = "TODO"
+            pretrained_dict[f'encoder.{encoder_id}.0.weight'] = cur_model.fc.transpose(0,1)
+            pretrained_dict[f'encoder.{encoder_id}.0.bias'] = cur_model.bias_h
+            pretrained_dict[f'decoder.{decoder_id}.0.weight'] =  cur_model.fc
+            pretrained_dict[f'decoder.{decoder_id}.0.bias'] = cur_model.bias_v
 
         model_dict.update(pretrained_dict)
         ae_model.load_state_dict(model_dict)
