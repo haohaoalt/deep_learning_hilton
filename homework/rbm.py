@@ -2,24 +2,25 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from math import sqrt
-
+# 实现RBM模型
 class RBM(nn.Module):
+    # 初始化连接权weight和阈值bias
     def __init__(self, in_features, out_features, k=2):
         super(RBM, self).__init__()
         self.fc = (torch.randn((in_features,out_features))*sqrt(2/(in_features+out_features))).to(torch.device('cuda'))
         self.bias_v = torch.zeros(in_features).to(torch.device('cuda'))
         self.bias_h = torch.zeros(out_features).to(torch.device('cuda'))
         self.k = k
-
+# 实现Gibbs采样
     def sample_p(self, p):
         sample=torch.rand_like(p) # 0-1均匀分布
         sample=torch.where(sample<=p,1.,0.)
         return sample
-
+# 能量函数
     def v2h(self, v):
         p_h = torch.sigmoid(v @ self.fc + self.bias_h)
         return p_h, self.sample_p(p_h)
-
+# 能量函数
     def h2v(self, h):
         p_v = torch.sigmoid(h @ self.fc.transpose(0,1)+self.bias_v)
         return p_v, self.sample_p(p_v)
@@ -28,7 +29,7 @@ class RBM(nn.Module):
         p_v, a_v = self.h2v(h)
         p_h, a_h = self.v2h(p_v)
         return p_v, a_v, p_h, a_h
-
+# 基于对比散度算法对连接权和阈值进行更新
     def contrastive_divergence(self, x, lr):
         pos_p_h, pos_a_h = self.v2h(x)
 
@@ -44,7 +45,7 @@ class RBM(nn.Module):
         h, _ = self.v2h(x)
         v, _ = self.h2v(h)
         return v
-
+# 集成了对许多 RBM 模型的统一 `propup` 和 `propdown` 操作, 并伪装成一个迭代器.
 class RBMHandle():
     def __init__(self):
         self.models = []

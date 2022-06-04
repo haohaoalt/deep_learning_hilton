@@ -1,7 +1,7 @@
-raw: 0.9993
-raw-pca: 0.9036
-ae: 0.8267
-raw: 0.9993
-raw-pca: 0.9036
-ae: 0.8267
-rbm: 0.8992
+
+
+
+auto-encoder result raw: 0.9993
+auto-encoder result raw-pca: 0.9036
+auto-encoder result ae: 0.8186
+auto-encoder result rbm: 0.9029

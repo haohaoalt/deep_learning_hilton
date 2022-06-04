@@ -71,9 +71,9 @@ def parse_option():
     parser.add_argument('--gpu', type=str, default='0')
     parser.add_argument('--data_dir', type=str, default='data')
     parser.add_argument('--init_weights', type=str, default=None)
-    parser.add_argument('--batch_size', type=int, default=64)  # pre 256
+    parser.add_argument('--batch_size', type=int, default= 64)  # pre 256
     parser.add_argument('--dataset', type=str, default='MNIST')
-    parser.add_argument('--max_epoch', type=int, default=10)  # 170 0.847  pre 300
+    parser.add_argument('--max_epoch', type=int, default = 50)  # 170 0.847  pre 300
     parser.add_argument('--lr_rbm', type=float, default=0.001)
     parser.add_argument('--lr_ae', type=float, default=0.0001)
     parser.add_argument('--k', type=int, default=2)
@@ -196,7 +196,7 @@ def get_colored_mnist_dataloader(batch_size, data_label_correlation, severity, s
 class PrepareFunc(object):
     def __init__(self, args):
         self.args = args
-
+# `load_rbm_pretrained_models` 函数, 该方法将 `rbm_models` 内存储的 RBM 模型权重加载进 `ae_model`, 注意加载完成后 `ae_model` 的encoder和decoder连接权weight互为转置关系, 阈值bias为对应 RBM 的.
     def load_rbm_pretrained_models(self, ae_model, rbm_models):
         rbm_model_length = len(rbm_models)
         if rbm_model_length == 0:
@@ -226,7 +226,7 @@ class PrepareFunc(object):
         model = model.to(torch.device('cuda'))
 
         return model
-
+# `Dataloader` 将在 `train_rbm` 等函数中以 `for` 循环的形式被调用.
     def prepare_dataloader(self, dataset_name):
         if dataset_name == 'MNIST':
 

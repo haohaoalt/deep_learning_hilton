@@ -8,7 +8,7 @@ def basic_block(in_features, out_features):
         nn.Linear(in_features, out_features),
         nn.Sigmoid()
     )
-
+# 实现class Autoencoder
 class Autoencoder(nn.Module):
     def __init__(self, layers=[784, 2000, 1000, 500, 30]):
         super(Autoencoder, self).__init__()

@@ -15,9 +15,9 @@ warnings.filterwarnings("ignore")
 
 YOUR_STUDENT_ID = "zhanghao"
 
-
+# 训练rbm模型
 def train_rbm(model, train_loader, rbm_models, criterion, args):
-    print("Begin training..")
+    print("Begin training rbm model..")
     for epoch in range(args.rbm_epoch):
         epoch_loss = 0
         for idx, (x, _) in enumerate(train_loader):
@@ -26,7 +26,7 @@ def train_rbm(model, train_loader, rbm_models, criterion, args):
             loss = criterion(rbm_models.h2v(model.v2h2v(rbm_models.v2h(x))), x)
             epoch_loss += loss.item()
         print(f'Epoch {epoch} Loss: {epoch_loss:.4f}.')
-    print("Completed.")
+    print("rbm model train Completed.")
 
 
 def validate_loaded_ae(ae_model, rbm_models, train_loader):
@@ -34,7 +34,7 @@ def validate_loaded_ae(ae_model, rbm_models, train_loader):
         x = x.view(x.shape[0], -1).to(torch.device('cuda'))
         print(torch.norm(rbm_models.v2h2v(x) - ae_model(x)))
 
-
+# Autoencoder 的训练部分, 该部分的训练与常规的PyTorch训练一致.
 def train_ae(model, train_loader, criterion, optimizer, args):
     for epoch in range(args.max_epoch):
         epoch_loss = 0
@@ -47,9 +47,9 @@ def train_ae(model, train_loader, criterion, optimizer, args):
             optimizer.step()
 
             epoch_loss += loss.item()
-        print(f'Epoch {epoch} Loss: {epoch_loss / len(train_loader):.4f}.')
+        print(f'Autoencoder train ' + f'Epoch {epoch} Loss: {epoch_loss / len(train_loader):.4f}.')
 
-
+#  `val_ae` 中, 实现了一个简单的分类器, 来验证 Autoencoder 的有效性.
 def val_ae(model, test_loader, prefix=None, is_raw=False, pca=None):
     from sklearn.linear_model import LogisticRegression
     hidden, label = [], []
@@ -72,12 +72,12 @@ def val_ae(model, test_loader, prefix=None, is_raw=False, pca=None):
     clf = LogisticRegression(max_iter=300)
     clf.fit(hidden_np, label_np)
     test_acc = clf.score(hidden_np, label_np)
-    print(f'Test Accuracy: {test_acc}.')
+    print(f'auto-encoder test Accuracy: {test_acc}.')
     if prefix is not None:
         with open(f'./bonus/{YOUR_STUDENT_ID}.csv', 'a') as f:
-            f.write(f'{prefix}: {test_acc}\n')
+            f.write(f'auto-encoder result ' + f'{prefix}: {test_acc}\n')
 
-
+# 实现一个简单的t-SNE, 将 Autoencoder 中间的30维打印出来
 def tsne_ae(model, cur_loader, file_name='', is_raw=False, pca=None):
     import matplotlib.pyplot as plt
     from mpl_toolkits.mplot3d import Axes3D
@@ -168,8 +168,9 @@ if __name__ == '__main__':
     if not is_colab:
         set_gpu(args.gpu)
     pprint(vars(args))
-
+    # 准备数据集
     prepare_handle = PrepareFunc(args)
+    #调用 rbm.py中设计的类
     train_loader, test_loader = prepare_handle.prepare_dataloader(args.dataset)
 
     '''
@@ -218,6 +219,7 @@ if __name__ == '__main__':
     test4
     '''
     args.do_train_rbm = True
+    # 训练一系列的RBM模型
     ae_dims = [784, 2000, 1000, 500, 30]
     rbm_models = prepare_handle.prepare_model('rbm_handle')
     criterion = prepare_handle.prepare_loss_fn()
@@ -240,29 +242,29 @@ if __name__ == '__main__':
 
     '''
     test 5:
-    '''
-    if args.bonus:
-        ae_dims = [784, 2000, 1000, 500, 30]
-        ae_model = prepare_handle.prepare_model('ae', ae_dims)
-        ae_model.load_state_dict(torch.load("ae_param.pth"))
-        debias_train_loader, debias_test_loader = prepare_handle.prepare_dataloader('ColoredMNIST')
-
-        val_ae(ae_model, debias_test_loader, prefix='color-raw', is_raw=True)
-        tsne_ae(ae_model, debias_test_loader, 'color-raw', is_raw=True)
-        val_ae(ae_model, debias_test_loader, prefix='color')
-        tsne_ae(ae_model, debias_test_loader, 'color')
-
-        model = torchvision.models.resnet18(pretrained=True)
-        model.fc = torch.nn.Linear(512, 10)
-        model = model.to(torch.device("cuda"))
-        for p in model.parameters():
-            p.requires_grad = False
-        for p in model.fc.parameters():
-            p.requires_grad = True
-        optimizer = prepare_handle.prepare_optimizer(model)
-        print(optimizer)
-        supervised_train(model, debias_train_loader, optimizer, args)
-        with torch.no_grad():
-            val_extract_bias_conflicting(model, debias_train_loader)
-        print('test5 done')
+    # '''
+    # if args.bonus:
+    #     ae_dims = [784, 2000, 1000, 500, 30]
+    #     ae_model = prepare_handle.prepare_model('ae', ae_dims)
+    #     ae_model.load_state_dict(torch.load("ae_param.pth"))
+    #     debias_train_loader, debias_test_loader = prepare_handle.prepare_dataloader('ColoredMNIST')
+    #
+    #     val_ae(ae_model, debias_test_loader, prefix='color-raw', is_raw=True)
+    #     tsne_ae(ae_model, debias_test_loader, 'color-raw', is_raw=True)
+    #     val_ae(ae_model, debias_test_loader, prefix='color')
+    #     tsne_ae(ae_model, debias_test_loader, 'color')
+    #
+    #     model = torchvision.models.resnet18(pretrained=True)
+    #     model.fc = torch.nn.Linear(512, 10)
+    #     model = model.to(torch.device("cuda"))
+    #     for p in model.parameters():
+    #         p.requires_grad = False
+    #     for p in model.fc.parameters():
+    #         p.requires_grad = True
+    #     optimizer = prepare_handle.prepare_optimizer(model)
+    #     print(optimizer)
+    #     supervised_train(model, debias_train_loader, optimizer, args)
+    #     with torch.no_grad():
+    #         val_extract_bias_conflicting(model, debias_train_loader)
+    #     print('test5 done')
 
