@@ -1,5 +1,395 @@
-auto-encoder result raw: 0.9993
-auto-encoder result raw-pca: 0.9036
-auto-encoder result ae: 0.8267
-auto-encoder result rbm: 0.8992
--------------------------------------------------------
+D:\anaconda3_3.9\envs\pytorch\python.exe F:/BaiduNetdiskWorkspace/github/deep_learning_hilton/homework/main.py
+GPU 0 NVIDIA GeForce RTX 2060: Memory-Usage 700 MiB / 6144 MiB.
+{'batch_size': 64,
+ 'bonus': False,
+ 'data_dir': 'data',
+ 'dataset': 'MNIST',
+ 'do_train_rbm': False,
+ 'finetune_epoch': 5,
+ 'gpu': '0',
+ 'init_weights': None,
+ 'k': 2,
+ 'loss_fn': 'nn-mse',
+ 'lr_ae': 0.0001,
+ 'lr_rbm': 0.001,
+ 'max_epoch': 80,
+ 'notes': '',
+ 'num_workers': 0,
+ 'optimizer': 'adam',
+ 'rbm_epoch': 50,
+ 'time_str': '0606-09-14-35-798',
+ 'weight_decay': 0}
+Autoencoder train Epoch 0 Loss: 0.0692.
+Autoencoder train Epoch 1 Loss: 0.0676.
+Autoencoder train Epoch 2 Loss: 0.0675.
+Autoencoder train Epoch 3 Loss: 0.0675.
+Autoencoder train Epoch 4 Loss: 0.0675.
+Autoencoder train Epoch 5 Loss: 0.0674.
+Autoencoder train Epoch 6 Loss: 0.0674.
+Autoencoder train Epoch 7 Loss: 0.0674.
+Autoencoder train Epoch 8 Loss: 0.0673.
+Autoencoder train Epoch 9 Loss: 0.0673.
+Autoencoder train Epoch 10 Loss: 0.0668.
+Autoencoder train Epoch 11 Loss: 0.0591.
+Autoencoder train Epoch 12 Loss: 0.0570.
+Autoencoder train Epoch 13 Loss: 0.0555.
+Autoencoder train Epoch 14 Loss: 0.0543.
+Autoencoder train Epoch 15 Loss: 0.0531.
+Autoencoder train Epoch 16 Loss: 0.0522.
+Autoencoder train Epoch 17 Loss: 0.0514.
+Autoencoder train Epoch 18 Loss: 0.0508.
+Autoencoder train Epoch 19 Loss: 0.0502.
+Autoencoder train Epoch 20 Loss: 0.0499.
+Autoencoder train Epoch 21 Loss: 0.0495.
+Autoencoder train Epoch 22 Loss: 0.0491.
+Autoencoder train Epoch 23 Loss: 0.0488.
+Autoencoder train Epoch 24 Loss: 0.0486.
+Autoencoder train Epoch 25 Loss: 0.0482.
+Autoencoder train Epoch 26 Loss: 0.0479.
+Autoencoder train Epoch 27 Loss: 0.0476.
+Autoencoder train Epoch 28 Loss: 0.0472.
+Autoencoder train Epoch 29 Loss: 0.0468.
+Autoencoder train Epoch 30 Loss: 0.0464.
+Autoencoder train Epoch 31 Loss: 0.0460.
+Autoencoder train Epoch 32 Loss: 0.0455.
+Autoencoder train Epoch 33 Loss: 0.0451.
+Autoencoder train Epoch 34 Loss: 0.0447.
+Autoencoder train Epoch 35 Loss: 0.0442.
+Autoencoder train Epoch 36 Loss: 0.0433.
+Autoencoder train Epoch 37 Loss: 0.0419.
+Autoencoder train Epoch 38 Loss: 0.0406.
+Autoencoder train Epoch 39 Loss: 0.0397.
+Autoencoder train Epoch 40 Loss: 0.0390.
+Autoencoder train Epoch 41 Loss: 0.0384.
+Autoencoder train Epoch 42 Loss: 0.0378.
+Autoencoder train Epoch 43 Loss: 0.0372.
+Autoencoder train Epoch 44 Loss: 0.0366.
+Autoencoder train Epoch 45 Loss: 0.0360.
+Autoencoder train Epoch 46 Loss: 0.0355.
+Autoencoder train Epoch 47 Loss: 0.0351.
+Autoencoder train Epoch 48 Loss: 0.0347.
+Autoencoder train Epoch 49 Loss: 0.0344.
+Autoencoder train Epoch 50 Loss: 0.0340.
+Autoencoder train Epoch 51 Loss: 0.0338.
+Autoencoder train Epoch 52 Loss: 0.0335.
+Autoencoder train Epoch 53 Loss: 0.0332.
+Autoencoder train Epoch 54 Loss: 0.0330.
+Autoencoder train Epoch 55 Loss: 0.0328.
+Autoencoder train Epoch 56 Loss: 0.0327.
+Autoencoder train Epoch 57 Loss: 0.0325.
+Autoencoder train Epoch 58 Loss: 0.0323.
+Autoencoder train Epoch 59 Loss: 0.0321.
+Autoencoder train Epoch 60 Loss: 0.0320.
+Autoencoder train Epoch 61 Loss: 0.0318.
+Autoencoder train Epoch 62 Loss: 0.0317.
+Autoencoder train Epoch 63 Loss: 0.0316.
+Autoencoder train Epoch 64 Loss: 0.0315.
+Autoencoder train Epoch 65 Loss: 0.0313.
+Autoencoder train Epoch 66 Loss: 0.0312.
+Autoencoder train Epoch 67 Loss: 0.0311.
+Autoencoder train Epoch 68 Loss: 0.0310.
+Autoencoder train Epoch 69 Loss: 0.0309.
+Autoencoder train Epoch 70 Loss: 0.0308.
+Autoencoder train Epoch 71 Loss: 0.0307.
+Autoencoder train Epoch 72 Loss: 0.0306.
+Autoencoder train Epoch 73 Loss: 0.0305.
+Autoencoder train Epoch 74 Loss: 0.0304.
+Autoencoder train Epoch 75 Loss: 0.0303.
+Autoencoder train Epoch 76 Loss: 0.0302.
+Autoencoder train Epoch 77 Loss: 0.0301.
+Autoencoder train Epoch 78 Loss: 0.0301.
+Autoencoder train Epoch 79 Loss: 0.0300.
+auto-encoder test Accuracy: 0.8691.
+test3 done
+Begin training rbm model..
+Epoch 0 Loss: 50.2249.
+Epoch 1 Loss: 37.3575.
+Epoch 2 Loss: 30.2063.
+Epoch 3 Loss: 26.3614.
+Epoch 4 Loss: 23.5460.
+Epoch 5 Loss: 21.3489.
+Epoch 6 Loss: 19.6033.
+Epoch 7 Loss: 18.1405.
+Epoch 8 Loss: 16.9070.
+Epoch 9 Loss: 15.8385.
+Epoch 10 Loss: 14.9151.
+Epoch 11 Loss: 14.1149.
+Epoch 12 Loss: 13.4028.
+Epoch 13 Loss: 12.7643.
+Epoch 14 Loss: 12.1942.
+Epoch 15 Loss: 11.6843.
+Epoch 16 Loss: 11.2241.
+Epoch 17 Loss: 10.8078.
+Epoch 18 Loss: 10.4304.
+Epoch 19 Loss: 10.0810.
+Epoch 20 Loss: 9.7635.
+Epoch 21 Loss: 9.4714.
+Epoch 22 Loss: 9.2053.
+Epoch 23 Loss: 8.9577.
+Epoch 24 Loss: 8.7243.
+Epoch 25 Loss: 8.5084.
+Epoch 26 Loss: 8.3040.
+Epoch 27 Loss: 8.1150.
+Epoch 28 Loss: 7.9315.
+Epoch 29 Loss: 7.7655.
+Epoch 30 Loss: 7.6025.
+Epoch 31 Loss: 7.4533.
+Epoch 32 Loss: 7.3089.
+Epoch 33 Loss: 7.1749.
+Epoch 34 Loss: 7.0444.
+Epoch 35 Loss: 6.9228.
+Epoch 36 Loss: 6.8073.
+Epoch 37 Loss: 6.6953.
+Epoch 38 Loss: 6.5881.
+Epoch 39 Loss: 6.4879.
+Epoch 40 Loss: 6.3939.
+Epoch 41 Loss: 6.3007.
+Epoch 42 Loss: 6.2141.
+Epoch 43 Loss: 6.1278.
+Epoch 44 Loss: 6.0450.
+Epoch 45 Loss: 5.9637.
+Epoch 46 Loss: 5.8890.
+Epoch 47 Loss: 5.8161.
+Epoch 48 Loss: 5.7462.
+Epoch 49 Loss: 5.6758.
+rbm model train Completed.
+Begin training rbm model..
+Epoch 0 Loss: 58.8405.
+Epoch 1 Loss: 39.0599.
+Epoch 2 Loss: 31.0371.
+Epoch 3 Loss: 26.2288.
+Epoch 4 Loss: 22.9064.
+Epoch 5 Loss: 20.4454.
+Epoch 6 Loss: 18.5378.
+Epoch 7 Loss: 17.0521.
+Epoch 8 Loss: 15.8951.
+Epoch 9 Loss: 14.9378.
+Epoch 10 Loss: 14.1318.
+Epoch 11 Loss: 13.4679.
+Epoch 12 Loss: 12.9242.
+Epoch 13 Loss: 12.4688.
+Epoch 14 Loss: 12.0687.
+Epoch 15 Loss: 11.7434.
+Epoch 16 Loss: 11.4673.
+Epoch 17 Loss: 11.2355.
+Epoch 18 Loss: 11.0259.
+Epoch 19 Loss: 10.8419.
+Epoch 20 Loss: 10.6813.
+Epoch 21 Loss: 10.5273.
+Epoch 22 Loss: 10.4081.
+Epoch 23 Loss: 10.2931.
+Epoch 24 Loss: 10.1952.
+Epoch 25 Loss: 10.1017.
+Epoch 26 Loss: 10.0213.
+Epoch 27 Loss: 9.9443.
+Epoch 28 Loss: 9.8636.
+Epoch 29 Loss: 9.8074.
+Epoch 30 Loss: 9.7463.
+Epoch 31 Loss: 9.6912.
+Epoch 32 Loss: 9.6373.
+Epoch 33 Loss: 9.5795.
+Epoch 34 Loss: 9.5339.
+Epoch 35 Loss: 9.4924.
+Epoch 36 Loss: 9.4516.
+Epoch 37 Loss: 9.4177.
+Epoch 38 Loss: 9.3739.
+Epoch 39 Loss: 9.3364.
+Epoch 40 Loss: 9.3005.
+Epoch 41 Loss: 9.2739.
+Epoch 42 Loss: 9.2433.
+Epoch 43 Loss: 9.2172.
+Epoch 44 Loss: 9.1943.
+Epoch 45 Loss: 9.1727.
+Epoch 46 Loss: 9.1460.
+Epoch 47 Loss: 9.1273.
+Epoch 48 Loss: 9.1025.
+Epoch 49 Loss: 9.0806.
+rbm model train Completed.
+Begin training rbm model..
+Epoch 0 Loss: 56.8092.
+Epoch 1 Loss: 42.6069.
+Epoch 2 Loss: 35.3042.
+Epoch 3 Loss: 31.4211.
+Epoch 4 Loss: 28.4042.
+Epoch 5 Loss: 25.9512.
+Epoch 6 Loss: 24.0580.
+Epoch 7 Loss: 22.5786.
+Epoch 8 Loss: 21.3891.
+Epoch 9 Loss: 20.3638.
+Epoch 10 Loss: 19.4796.
+Epoch 11 Loss: 18.7246.
+Epoch 12 Loss: 18.0621.
+Epoch 13 Loss: 17.4957.
+Epoch 14 Loss: 16.9856.
+Epoch 15 Loss: 16.5349.
+Epoch 16 Loss: 16.1289.
+Epoch 17 Loss: 15.7639.
+Epoch 18 Loss: 15.4422.
+Epoch 19 Loss: 15.1521.
+Epoch 20 Loss: 14.8876.
+Epoch 21 Loss: 14.6581.
+Epoch 22 Loss: 14.4421.
+Epoch 23 Loss: 14.2452.
+Epoch 24 Loss: 14.0715.
+Epoch 25 Loss: 13.9126.
+Epoch 26 Loss: 13.7669.
+Epoch 27 Loss: 13.6377.
+Epoch 28 Loss: 13.5155.
+Epoch 29 Loss: 13.4062.
+Epoch 30 Loss: 13.3088.
+Epoch 31 Loss: 13.2149.
+Epoch 32 Loss: 13.1299.
+Epoch 33 Loss: 13.0460.
+Epoch 34 Loss: 12.9728.
+Epoch 35 Loss: 12.9000.
+Epoch 36 Loss: 12.8333.
+Epoch 37 Loss: 12.7730.
+Epoch 38 Loss: 12.7185.
+Epoch 39 Loss: 12.6637.
+Epoch 40 Loss: 12.6180.
+Epoch 41 Loss: 12.5676.
+Epoch 42 Loss: 12.5169.
+Epoch 43 Loss: 12.4780.
+Epoch 44 Loss: 12.4355.
+Epoch 45 Loss: 12.3951.
+Epoch 46 Loss: 12.3619.
+Epoch 47 Loss: 12.3269.
+Epoch 48 Loss: 12.2974.
+Epoch 49 Loss: 12.2617.
+rbm model train Completed.
+Begin training rbm model..
+Epoch 0 Loss: 88.7783.
+Epoch 1 Loss: 74.7467.
+Epoch 2 Loss: 68.4750.
+Epoch 3 Loss: 62.5426.
+Epoch 4 Loss: 58.2513.
+Epoch 5 Loss: 55.2332.
+Epoch 6 Loss: 52.9659.
+Epoch 7 Loss: 51.1760.
+Epoch 8 Loss: 49.7367.
+Epoch 9 Loss: 48.5200.
+Epoch 10 Loss: 47.4480.
+Epoch 11 Loss: 46.4652.
+Epoch 12 Loss: 45.5767.
+Epoch 13 Loss: 44.7228.
+Epoch 14 Loss: 43.9468.
+Epoch 15 Loss: 43.2509.
+Epoch 16 Loss: 42.6138.
+Epoch 17 Loss: 42.0255.
+Epoch 18 Loss: 41.5053.
+Epoch 19 Loss: 41.0350.
+Epoch 20 Loss: 40.6204.
+Epoch 21 Loss: 40.2301.
+Epoch 22 Loss: 39.8703.
+Epoch 23 Loss: 39.5395.
+Epoch 24 Loss: 39.2334.
+Epoch 25 Loss: 38.9473.
+Epoch 26 Loss: 38.6891.
+Epoch 27 Loss: 38.4442.
+Epoch 28 Loss: 38.1885.
+Epoch 29 Loss: 37.9624.
+Epoch 30 Loss: 37.7436.
+Epoch 31 Loss: 37.5367.
+Epoch 32 Loss: 37.3434.
+Epoch 33 Loss: 37.1553.
+Epoch 34 Loss: 36.9650.
+Epoch 35 Loss: 36.7868.
+Epoch 36 Loss: 36.6164.
+Epoch 37 Loss: 36.4455.
+Epoch 38 Loss: 36.2833.
+Epoch 39 Loss: 36.1305.
+Epoch 40 Loss: 35.9840.
+Epoch 41 Loss: 35.8395.
+Epoch 42 Loss: 35.6929.
+Epoch 43 Loss: 35.5604.
+Epoch 44 Loss: 35.4241.
+Epoch 45 Loss: 35.2850.
+Epoch 46 Loss: 35.1591.
+Epoch 47 Loss: 35.0358.
+Epoch 48 Loss: 34.9185.
+Epoch 49 Loss: 34.7980.
+rbm model train Completed.
+Autoencoder train Epoch 0 Loss: 0.0237.
+Autoencoder train Epoch 1 Loss: 0.0185.
+Autoencoder train Epoch 2 Loss: 0.0165.
+Autoencoder train Epoch 3 Loss: 0.0152.
+Autoencoder train Epoch 4 Loss: 0.0141.
+Autoencoder train Epoch 5 Loss: 0.0133.
+Autoencoder train Epoch 6 Loss: 0.0125.
+Autoencoder train Epoch 7 Loss: 0.0119.
+Autoencoder train Epoch 8 Loss: 0.0114.
+Autoencoder train Epoch 9 Loss: 0.0109.
+Autoencoder train Epoch 10 Loss: 0.0105.
+Autoencoder train Epoch 11 Loss: 0.0101.
+Autoencoder train Epoch 12 Loss: 0.0098.
+Autoencoder train Epoch 13 Loss: 0.0095.
+Autoencoder train Epoch 14 Loss: 0.0092.
+Autoencoder train Epoch 15 Loss: 0.0090.
+Autoencoder train Epoch 16 Loss: 0.0088.
+Autoencoder train Epoch 17 Loss: 0.0086.
+Autoencoder train Epoch 18 Loss: 0.0084.
+Autoencoder train Epoch 19 Loss: 0.0082.
+Autoencoder train Epoch 20 Loss: 0.0081.
+Autoencoder train Epoch 21 Loss: 0.0079.
+Autoencoder train Epoch 22 Loss: 0.0078.
+Autoencoder train Epoch 23 Loss: 0.0076.
+Autoencoder train Epoch 24 Loss: 0.0075.
+Autoencoder train Epoch 25 Loss: 0.0073.
+Autoencoder train Epoch 26 Loss: 0.0072.
+Autoencoder train Epoch 27 Loss: 0.0071.
+Autoencoder train Epoch 28 Loss: 0.0070.
+Autoencoder train Epoch 29 Loss: 0.0069.
+Autoencoder train Epoch 30 Loss: 0.0068.
+Autoencoder train Epoch 31 Loss: 0.0068.
+Autoencoder train Epoch 32 Loss: 0.0067.
+Autoencoder train Epoch 33 Loss: 0.0066.
+Autoencoder train Epoch 34 Loss: 0.0065.
+Autoencoder train Epoch 35 Loss: 0.0064.
+Autoencoder train Epoch 36 Loss: 0.0063.
+Autoencoder train Epoch 37 Loss: 0.0062.
+Autoencoder train Epoch 38 Loss: 0.0062.
+Autoencoder train Epoch 39 Loss: 0.0061.
+Autoencoder train Epoch 40 Loss: 0.0060.
+Autoencoder train Epoch 41 Loss: 0.0060.
+Autoencoder train Epoch 42 Loss: 0.0059.
+Autoencoder train Epoch 43 Loss: 0.0059.
+Autoencoder train Epoch 44 Loss: 0.0058.
+Autoencoder train Epoch 45 Loss: 0.0058.
+Autoencoder train Epoch 46 Loss: 0.0058.
+Autoencoder train Epoch 47 Loss: 0.0057.
+Autoencoder train Epoch 48 Loss: 0.0057.
+Autoencoder train Epoch 49 Loss: 0.0056.
+Autoencoder train Epoch 50 Loss: 0.0055.
+Autoencoder train Epoch 51 Loss: 0.0054.
+Autoencoder train Epoch 52 Loss: 0.0054.
+Autoencoder train Epoch 53 Loss: 0.0053.
+Autoencoder train Epoch 54 Loss: 0.0053.
+Autoencoder train Epoch 55 Loss: 0.0053.
+Autoencoder train Epoch 56 Loss: 0.0052.
+Autoencoder train Epoch 57 Loss: 0.0052.
+Autoencoder train Epoch 58 Loss: 0.0052.
+Autoencoder train Epoch 59 Loss: 0.0051.
+Autoencoder train Epoch 60 Loss: 0.0051.
+Autoencoder train Epoch 61 Loss: 0.0051.
+Autoencoder train Epoch 62 Loss: 0.0051.
+Autoencoder train Epoch 63 Loss: 0.0051.
+Autoencoder train Epoch 64 Loss: 0.0050.
+Autoencoder train Epoch 65 Loss: 0.0050.
+Autoencoder train Epoch 66 Loss: 0.0049.
+Autoencoder train Epoch 67 Loss: 0.0049.
+Autoencoder train Epoch 68 Loss: 0.0048.
+Autoencoder train Epoch 69 Loss: 0.0048.
+Autoencoder train Epoch 70 Loss: 0.0047.
+Autoencoder train Epoch 71 Loss: 0.0047.
+Autoencoder train Epoch 72 Loss: 0.0047.
+Autoencoder train Epoch 73 Loss: 0.0047.
+Autoencoder train Epoch 74 Loss: 0.0047.
+Autoencoder train Epoch 75 Loss: 0.0046.
+Autoencoder train Epoch 76 Loss: 0.0046.
+Autoencoder train Epoch 77 Loss: 0.0046.
+Autoencoder train Epoch 78 Loss: 0.0047.
+Autoencoder train Epoch 79 Loss: 0.0046.
+auto-encoder test Accuracy: 0.9083.
+test4 done
+
+进程已结束,退出代码0

@@ -73,7 +73,7 @@ def parse_option():
     parser.add_argument('--init_weights', type=str, default=None)
     parser.add_argument('--batch_size', type=int, default= 64)  # pre 256
     parser.add_argument('--dataset', type=str, default='MNIST')
-    parser.add_argument('--max_epoch', type=int, default = 50)  # 170 0.847  pre 300
+    parser.add_argument('--max_epoch', type=int, default = 80)  # 170 0.847  pre 300
     parser.add_argument('--lr_rbm', type=float, default=0.001)
     parser.add_argument('--lr_ae', type=float, default=0.0001)
     parser.add_argument('--k', type=int, default=2)

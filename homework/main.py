@@ -176,25 +176,25 @@ if __name__ == '__main__':
     '''
     test1
     '''
-    val_ae(None, test_loader, prefix='raw', is_raw=True)
-    tsne_ae(None, test_loader, 'raw', is_raw=True)
-    print('test1 done')
+    # val_ae(None, test_loader, prefix='raw', is_raw=True)
+    # tsne_ae(None, test_loader, 'raw', is_raw=True)
+    # print('test1 done')
     '''
     test2
     '''
-    hidden, label = [], []
-    for idx, (x, y) in enumerate(test_loader):
-        if x.shape[1] == 3:
-            x = x.mean(dim=1, keepdim=True)
-        if isinstance(y, list):
-            y = y[0]
-        x = x.view(x.shape[0], -1)
-        hidden.append(x.detach().cpu())
-    hidden_np = torch.cat(hidden).numpy()
-    pca = PCA(n_components=30).fit(hidden_np)
-    val_ae(None, test_loader, prefix='raw-pca', is_raw=True, pca=pca)
-    tsne_ae(None, test_loader, 'raw-pca', is_raw=True, pca=pca)
-    print('test2 done')
+    # hidden, label = [], []
+    # for idx, (x, y) in enumerate(test_loader):
+    #     if x.shape[1] == 3:
+    #         x = x.mean(dim=1, keepdim=True)
+    #     if isinstance(y, list):
+    #         y = y[0]
+    #     x = x.view(x.shape[0], -1)
+    #     hidden.append(x.detach().cpu())
+    # hidden_np = torch.cat(hidden).numpy()
+    # pca = PCA(n_components=30).fit(hidden_np)
+    # val_ae(None, test_loader, prefix='raw-pca', is_raw=True, pca=pca)
+    # tsne_ae(None, test_loader, 'raw-pca', is_raw=True, pca=pca)
+    # print('test2 done')
     '''
     test3
     '''

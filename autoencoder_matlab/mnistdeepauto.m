@@ -24,7 +24,7 @@ maxepoch=10; %In the Science paper we use maxepoch=50, but it works just fine.
 numhid=1000; numpen=500; numpen2=250; numopen=30;
 
 fprintf(1,'Converting Raw files into Matlab format \n');
-converter; 
+converter; %将数据转换为matlab格式
 
 fprintf(1,'Pretraining a deep autoencoder. \n');
 fprintf(1,'The Science paper used 50 epochs. This uses %3i \n', maxepoch);
@@ -35,22 +35,22 @@ makebatches;
 fprintf(1,'Pretraining Layer 1 with RBM: %d-%d \n',numdims,numhid);
 restart=1;
 rbm;
-hidrecbiases=hidbiases; 
-save mnistvh vishid hidrecbiases visbiases;
+hidrecbiases=hidbiases;  %hidbiases为隐含层的偏置值
+save mnistvh vishid hidrecbiases visbiases;%保持每层的变量，分别为权值，隐含层偏置值，可视层偏置值
 
 fprintf(1,'\nPretraining Layer 2 with RBM: %d-%d \n',numhid,numpen);
-batchdata=batchposhidprobs;
+batchdata=batchposhidprobs;%batchposhidprobs为第一个rbm的输出概率值
 numhid=numpen;
 restart=1;
-rbm;
+rbm;% 第2个rbm的训练
 hidpen=vishid; penrecbiases=hidbiases; hidgenbiases=visbiases;
-save mnisthp hidpen penrecbiases hidgenbiases;
+save mnisthp hidpen penrecbiases hidgenbiases;%mnisthp为所保存的文件名
 
 fprintf(1,'\nPretraining Layer 3 with RBM: %d-%d \n',numpen,numpen2);
 batchdata=batchposhidprobs;
 numhid=numpen2;
 restart=1;
-rbm;
+rbm;%第3个rbm
 hidpen2=vishid; penrecbiases2=hidbiases; hidgenbiases2=visbiases;
 save mnisthp2 hidpen2 penrecbiases2 hidgenbiases2;
 

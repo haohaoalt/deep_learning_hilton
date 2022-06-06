@@ -23,6 +23,7 @@
 % This program was originally written by Yee Whye Teh 
 
 % Work with test files first 
+%实现的功能是将样本集从.ubyte格式转换成.ascii格式，然后继续转换成.mat格式。
 fprintf(1,'You first need to download files:\n train-images-idx3-ubyte.gz\n train-labels-idx1-ubyte.gz\n t10k-images-idx3-ubyte.gz\n t10k-labels-idx1-ubyte.gz\n from http://yann.lecun.com/exdb/mnist/\n and gunzip them \n'); 
 
 f = fopen('t10k-images.idx3-ubyte','r');

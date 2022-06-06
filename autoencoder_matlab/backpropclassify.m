@@ -21,7 +21,7 @@ maxepoch=20;
 fprintf(1,'\nTraining discriminative model on MNIST by minimizing cross entropy error. \n');
 fprintf(1,'60 batches of 1000 cases each. \n');
 
-load mnistvhclassify
+load mnistvhclassify %载入3个rbm网络的预训练好了的权值
 load mnisthpclassify
 load mnisthp2classify
 

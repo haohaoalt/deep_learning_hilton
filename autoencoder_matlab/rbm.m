@@ -24,7 +24,7 @@
 
 epsilonw      = 0.1;   % Learning rate for weights 
 epsilonvb     = 0.1;   % Learning rate for biases of visible units 
-epsilonhb     = 0.1;   % Learning rate for biases of hidden units 
+epsilonhb     = 0.1;   % Learning rate for biases of hidden units  %由此可见这里隐含层和可视层的偏置值不是共用的，当然了，其权值是共用的
 weightcost  = 0.0002;   
 initialmomentum  = 0.5;
 finalmomentum    = 0.9;
@@ -36,18 +36,18 @@ if restart ==1,
   epoch=1;
 
 % Initializing symmetric weights and biases. 
-  vishid     = 0.1*randn(numdims, numhid);
-  hidbiases  = zeros(1,numhid);
+  vishid     = 0.1*randn(numdims, numhid); %权值初始值随便给,784*1000
+  hidbiases  = zeros(1,numhid);%偏置值初始化为0
   visbiases  = zeros(1,numdims);
 
-  poshidprobs = zeros(numcases,numhid);
+  poshidprobs = zeros(numcases,numhid);%100*1000，单个batch正向传播时隐含层的输出概率
   neghidprobs = zeros(numcases,numhid);
   posprods    = zeros(numdims,numhid);
   negprods    = zeros(numdims,numhid);
   vishidinc  = zeros(numdims,numhid);
   hidbiasinc = zeros(1,numhid);
   visbiasinc = zeros(1,numdims);
-  batchposhidprobs=zeros(numcases,numhid,numbatches);
+  batchposhidprobs=zeros(numcases,numhid,numbatches);% 整个数据正向传播时隐含层的输出概率
 end
 
 for epoch = epoch:maxepoch,
