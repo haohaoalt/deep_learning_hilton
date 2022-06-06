@@ -105,15 +105,17 @@ code主要是2个单独的工程。
 
 因为自己训练硬件算力的限制，调整超参改善的实验结果参考https://github.com/G-U-N
 
-![img](../../%E8%87%AA%E5%BB%BA%E5%9B%BE%E5%BA%8A/t-sne-mnist-test-autoencoder-16543065050401.png)
+![](https://img-blog.csdnimg.cn/1cbc85dafc954a56ad74dddacf3a0abe.png)
 
 <center>Feature Visulization after Vanilla AutoEncoder!</center>
 
-![t-sne-mnist-test-bolzmann](../../%E8%87%AA%E5%BB%BA%E5%9B%BE%E5%BA%8A/t-sne-mnist-test-bolzmann-16543138337455.png)
+![](https://img-blog.csdnimg.cn/00ee8c5e7cb0435ebf05b61c8564bd1f.png)
 
 <center>Feature Visulization after RBM pretrained AutoEncoder  Best!!!👍
-## **5. 总结**
 
+​    
+
+## **5. 总结**
 
 - 找对资料，避免重复造轮子；
 - 编程实现的能力需要加强；
